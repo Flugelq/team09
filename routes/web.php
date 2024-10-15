@@ -18,6 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/sdgs', function () {
-    return view('intro_stg');
+    return view('intro_sdg');
 });
 
