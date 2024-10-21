@@ -99,7 +99,7 @@
                 <li><a href="#what-is-sdg">什麼是SDG？</a></li>
                 <li><a href="#goals">17項可持續發展目標</a></li>
                 <li><a href="#importance">為什麼SDG重要？</a></li>
-                <li><a href="#get-involved">如何參與？</a></li>
+                <li><a href="https://globalgoals.tw/">更多關於SDG</a></li>
             </ul>
         </nav>
     </header>
@@ -118,7 +118,7 @@
             </div>
 
             <div class="goal" onclick="toggleDetails('goal2-details')">
-                目標2：消除飢餓
+                目標2：終結飢餓
             </div>
             <div id="goal2-details" class="details">
                 <p>終結飢餓，實現食物安全和改善營養，促進可持續農業。</p>
@@ -146,42 +146,42 @@
             </div>
 
             <div class="goal" onclick="toggleDetails('goal6-details')">
-                目標6：清潔水與衛生設施
+                目標6：淨水與衛生
             </div>
             <div id="goal6-details" class="details">
                 <p>確保可持續管理水資源和衛生設施，人人享有清潔水。</p>
             </div>
 
             <div class="goal" onclick="toggleDetails('goal7-details')">
-                目標7：可再生能源
+                目標7：可負擔的永續能源
             </div>
             <div id="goal7-details" class="details">
                 <p>確保人人可獲得負擔得起、可靠、可持續和現代的能源。</p>
             </div>
 
             <div class="goal" onclick="toggleDetails('goal8-details')">
-                目標8：體面工作與經濟增長
+                目標8：就業與經濟增長
             </div>
             <div id="goal8-details" class="details">
                 <p>促進持久、包容和可持續的經濟增長，實現充分和生產性就業。</p>
             </div>
 
             <div class="goal" onclick="toggleDetails('goal9-details')">
-                目標9：產業、創新與基礎設施
+                目標9：永續工業與基礎建設
             </div>
             <div id="goal9-details" class="details">
                 <p>建設具有韌性的基礎設施，促進可持續工業化和推動創新。</p>
             </div>
 
             <div class="goal" onclick="toggleDetails('goal10-details')">
-                目標10：減少不平等
+                目標10：消弭不平等
             </div>
             <div id="goal10-details" class="details">
                 <p>在各國和國家內部減少不平等。</p>
             </div>
 
             <div class="goal" onclick="toggleDetails('goal11-details')">
-                目標11：可持續城市與社區
+                目標11：永續城鄉
             </div>
             <div id="goal11-details" class="details">
                 <p>使城市和人類住區包容、安全、有韌性和可持續。</p>
@@ -209,20 +209,29 @@
             </div>
 
             <div class="goal" onclick="toggleDetails('goal15-details')">
-                目標15：陸地生態
+                目標15：陸域生態
             </div>
             <div id="goal15-details" class="details">
                 <p>保護、恢復和促進可持續利用陸地生態系統，管理森林可持續利用。</p>
             </div>
 
             <div class="goal" onclick="toggleDetails('goal16-details')">
-                目標16：和平與公正
+                目標16：制度的正義與和平
             </div>
             <div id="goal16-details" class="details">
+                <p>促進和平且包容的社會，以落實永續發展；提供司法管道給所有人；在所有階層建立有效的、負責的且包容的制度</p>
+            </div>
+
+            <div class="goal" onclick="toggleDetails('goal17-details')">
+                目標17：永續發展夥伴關係
+            </div>
+            <div id="goal17-details" class="details">
+                <p>強化永續發展執行方法及活化永續發展全球夥伴關係</p>
+            </div>
             
-        <section>
+        <section id="importance">
             <h2>為什麼SDG重要？</h2>
-            <p>實現SDG不僅能改善人類的生活質量，還能保護地球，確保未來的可持續發展。這些目標彼此關聯，協同作用，可以帶來積極的變化。</p>
+            <p>實現SDG不僅能改善人類的生活品質，還能保護地球，確保未來的可持續發展。這些目標彼此關聯，協同作用，可以帶來積極的變化。</p>
         </section>
     </main>
     <footer>
