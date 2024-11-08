@@ -31,10 +31,25 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* 統計項目別分組 */
+        .category-group {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* 表格樣式 */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         th, td {
@@ -61,17 +76,6 @@
             color: #555;
         }
 
-        /* 表格數字樣式 */
-        td, th {
-            font-size: 14px;
-            text-align: center;
-        }
-
-        /* 字體加粗 */
-        th {
-            font-weight: bold;
-        }
-
         /* 樣式對齊 */
         .table-header {
             text-align: center;
@@ -83,36 +87,39 @@
     <h1>勞工生活及就業狀況調查</h1>
 
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th>統計項目別</th>
-                    <th>細項</th>
-                    <th>樣本數（人）</th>
-                    <th>很滿意（%）</th>
-                    <th>滿意（%）</th>
-                    <th>普通（%）</th>
-                    <th>不滿意（%）</th>
-                    <th>很不滿意（%）</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($Statistic as $statis)
-                    <tr>
-                        <td>{{ $statis->category}}</td>
-                        <td>{{ $statis->subcategory}}</td>
-                        <td>{{ $statis->sample_size}}</td>
-                        <td>{{ $statis->very_satisfied_pct}}</td>
-                        <td>{{ $statis->satisfied_pct}}</td>
-                        <td>{{ $statis->neutral_pct}}</td>
-                        <td>{{ $statis->dissatisfied_pct}}</td>
-                        <td>{{ $statis->very_dissatisfied_pct}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        @foreach ($Statistic->groupBy('category') as $category => $group)
+            <!-- 每個「統計項目別」的分組 -->
+            <div class="category-group">
+                <div class="category-title">{{ $category }}</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>細項</th>
+                            <th>樣本數（人）</th>
+                            <th>很滿意（%）</th>
+                            <th>滿意（%）</th>
+                            <th>普通（%）</th>
+                            <th>不滿意（%）</th>
+                            <th>很不滿意（%）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($group as $statis)
+                            <tr>
+                                <td>{{ $statis->subcategory }}</td>
+                                <td>{{ $statis->sample_size }}</td>
+                                <td>{{ $statis->very_satisfied_pct }}</td>
+                                <td>{{ $statis->satisfied_pct }}</td>
+                                <td>{{ $statis->neutral_pct }}</td>
+                                <td>{{ $statis->dissatisfied_pct }}</td>
+                                <td>{{ $statis->very_dissatisfied_pct }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endforeach
     </div>
 
 </body>
 </html>
-
