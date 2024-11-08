@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SurveyStatisticsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/sdgs', function () {
-    return view('intro_sdg');
-});
+Route::get('SurveyStatistics', [SurveyStatisticsController::class, 'index']);
 
