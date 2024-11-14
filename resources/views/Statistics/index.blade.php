@@ -1,66 +1,68 @@
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勞工生活及就業狀況調查</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- 引入Font Awesome圖標 -->
     <style>
-        /* 全局樣式 */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
             margin: 0;
             padding: 0;
-            background-color: #f4f7fc;
-            color: #333;
         }
 
         h1 {
-            background-color: #0056b3;
-            color: white;
+            background-color: #2c3e50;
+            color: #fff;
             text-align: center;
-            padding: 20px 0;
+            padding: 20px;
             margin: 0;
         }
 
-        /* 內容區域 */
         .container {
-            width: 90%;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: white;
+            background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* 統計項目別分組 */
         .category-group {
             margin-bottom: 30px;
         }
 
         .category-title {
-            background-color: #007bff;
-            color: white;
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 10px;
             padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 4px;
+            background-color: #ecf0f1;
+            border-radius: 6px;
         }
 
-        /* 表格樣式 */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
         th, td {
             padding: 12px;
             text-align: center;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
         }
 
         th {
-            background-color: #007bff;
+            background-color: #3498db;
             color: white;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background-color: #2980b9;
         }
 
         tr:nth-child(even) {
@@ -71,14 +73,32 @@
             background-color: #f1f1f1;
         }
 
-        /* 表格文字顏色 */
-        td {
-            color: #555;
+        .btn-sort {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
 
-        /* 樣式對齊 */
-        .table-header {
-            text-align: center;
+        .btn-sort i {
+            margin-left: 8px;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .search-container input {
+            padding: 8px;
+            font-size: 14px;
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        table td, table th {
+            caret-color: transparent;
         }
     </style>
 </head>
@@ -87,20 +107,23 @@
     <h1>勞工生活及就業狀況調查</h1>
 
     <div class="container">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="搜尋細項..." onkeyup="searchTable()">
+        </div>
         @foreach ($Statistic->groupBy('category') as $category => $group)
             <!-- 每個「統計項目別」的分組 -->
             <div class="category-group">
                 <div class="category-title">{{ $category }}</div>
-                <table>
+                <table id="table-{{ $loop->index }}">
                     <thead>
                         <tr>
-                            <th>細項</th>
-                            <th>樣本數（人）</th>
-                            <th>很滿意（%）</th>
-                            <th>滿意（%）</th>
-                            <th>普通（%）</th>
-                            <th>不滿意（%）</th>
-                            <th>很不滿意（%）</th>
+                            <th>細項 <span class="btn-sort" onclick="sortTable(0, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
+                            <th>樣本數（人）<span class="btn-sort" onclick="sortTable(1, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
+                            <th>很滿意（%）<span class="btn-sort" onclick="sortTable(2, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
+                            <th>滿意（%）<span class="btn-sort" onclick="sortTable(3, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
+                            <th>普通（%）<span class="btn-sort" onclick="sortTable(4, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
+                            <th>不滿意（%）<span class="btn-sort" onclick="sortTable(5, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
+                            <th>很不滿意（%）<span class="btn-sort" onclick="sortTable(6, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -120,6 +143,93 @@
             </div>
         @endforeach
     </div>
+
+    <script>
+        let currentSortColumn = -1; // 目前排序的列索引
+        let sortDirection = 1; // 1: 升序，-1: 降序
+
+        // 排序表格功能
+        function sortTable(columnIndex, tableIndex) {
+            var table = document.getElementById('table-' + tableIndex);
+            var rows = Array.from(table.rows).slice(1); // 排除表頭
+            var isAscending = sortDirection === 1; // 默認為升序
+
+            rows.sort(function(a, b) {
+                var cellA = a.cells[columnIndex].innerText.trim();
+                var cellB = b.cells[columnIndex].innerText.trim();
+
+                // 處理數字排序
+                if (!isNaN(cellA) && !isNaN(cellB)) {
+                    return isAscending ? cellA - cellB : cellB - cellA;
+                }
+
+                // 處理字串排序
+                return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+            });
+
+            // 重新填充表格行
+            rows.forEach(function(row) {
+                table.appendChild(row);
+            });
+
+            // 切換排序狀態
+            if (currentSortColumn === columnIndex) {
+                sortDirection = -sortDirection; // 反轉排序方向
+            } else {
+                sortDirection = 1; // 重置為升序
+            }
+
+            currentSortColumn = columnIndex;
+
+            // 更新箭頭顯示
+            updateSortIcons(tableIndex, columnIndex);
+
+            // 在排序後重新進行搜尋
+            searchTable();
+        }
+
+        // 更新排序箭頭
+        function updateSortIcons(tableIndex, columnIndex) {
+            var ths = document.querySelectorAll(`#table-${tableIndex} th`);
+            ths.forEach(function(th) {
+                var icon = th.querySelector("i");
+                if (icon) {
+                    icon.classList.remove("fa-sort-up", "fa-sort-down");
+                    icon.classList.add("fa-sort");
+                }
+            });
+
+            var currentTh = ths[columnIndex];
+            var icon = currentTh.querySelector("i");
+
+            if (sortDirection === 1) {
+                icon.classList.remove("fa-sort");
+                icon.classList.add("fa-sort-up"); // 升序箭頭
+            } else {
+                icon.classList.remove("fa-sort");
+                icon.classList.add("fa-sort-down"); // 降序箭頭
+            }
+        }
+
+        // 搜索表格中的細項
+        function searchTable() {
+            var input = document.getElementById('search');
+            var filter = input.value.toLowerCase();
+            var tables = document.querySelectorAll('table');
+
+            tables.forEach(function(table) {
+                var rows = table.querySelectorAll('tbody tr');
+                rows.forEach(function(row) {
+                    var text = row.querySelector('td').innerText.toLowerCase();
+                    if (text.indexOf(filter) > -1) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
 
 </body>
 </html>
