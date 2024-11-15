@@ -30,21 +30,8 @@
         /* 子標題 */
         h2 {
             font-size: 2rem;
-            color: #206ee4;
-            margin-top: 0;
-        }
-
-        /* 子標題超連結  (特效) */
-        h2 a {
             color: #0288d1;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        /* 子標題 hover 效果 */
-        h2 a:hover {
-            color: #01579b;
-            text-decoration: underline;
+            margin-top: 0;
         }
 
         /* 圖片樣式 */
@@ -65,13 +52,16 @@
 
     <h1>可持續發展目標</h1>
 
-    <!-- 插入圖片 -->
-    <div class="image-container">
-        <img src="https://sdg.tcu.edu.tw/wp-content/uploads/2020/10/E_SDG-goals_icons-individual-rgb-08.png" alt="可持續發展目標">
-    </div>
-
     <!-- 子標題設置為超連結，指向 SurveyStatistics 頁面 -->
-    <h2><a href="{{ url('SurveyStatistics') }}">勞工生活與就業狀況調查</a></h2>
+    <h2>勞工生活與就業狀況調查</h2>
+    <p>點擊下圖查看相關數據</p>
+
+        <!-- 圖片插入並設置為超連結 -->
+        <div class="image-container">
+            <a href="{{ url('SurveyStatistics') }}">
+                <img src="https://sdg.tcu.edu.tw/wp-content/uploads/2020/10/E_SDG-goals_icons-individual-rgb-08.png" alt="可持續發展目標">
+            </a>
+        </div>
 
     <p>這項調查旨在評估勞工的生活狀況與就業情況，並為政策制定者提供有關如何改善勞工生活條件的數據。</p>
 
