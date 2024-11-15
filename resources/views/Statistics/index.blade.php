@@ -31,10 +31,12 @@
         }
 
         .category-group {
+            caret-color: transparent;
             margin-bottom: 30px;
         }
 
         .category-title {
+            caret-color: transparent;
             font-size: 24px;
             color: #2c3e50;
             margin-bottom: 10px;
@@ -96,7 +98,7 @@
             border-radius: 4px;
             border: 1px solid #ccc;
         }
-
+        
         table td, table th {
             caret-color: transparent;
         }
@@ -145,14 +147,11 @@
     </div>
 
     <script>
-        let currentSortColumn = -1; // 目前排序的列索引
-        let sortDirection = 1; // 1: 升序，-1: 降序
-
         // 排序表格功能
         function sortTable(columnIndex, tableIndex) {
             var table = document.getElementById('table-' + tableIndex);
             var rows = Array.from(table.rows).slice(1); // 排除表頭
-            var isAscending = sortDirection === 1; // 默認為升序
+            var isAscending = table.querySelectorAll('th')[columnIndex].classList.contains('asc');
 
             rows.sort(function(a, b) {
                 var cellA = a.cells[columnIndex].innerText.trim();
@@ -173,42 +172,12 @@
             });
 
             // 切換排序狀態
-            if (currentSortColumn === columnIndex) {
-                sortDirection = -sortDirection; // 反轉排序方向
-            } else {
-                sortDirection = 1; // 重置為升序
-            }
-
-            currentSortColumn = columnIndex;
-
-            // 更新箭頭顯示
-            updateSortIcons(tableIndex, columnIndex);
-
-            // 在排序後重新進行搜尋
-            searchTable();
-        }
-
-        // 更新排序箭頭
-        function updateSortIcons(tableIndex, columnIndex) {
-            var ths = document.querySelectorAll(`#table-${tableIndex} th`);
-            ths.forEach(function(th) {
-                var icon = th.querySelector("i");
-                if (icon) {
-                    icon.classList.remove("fa-sort-up", "fa-sort-down");
-                    icon.classList.add("fa-sort");
-                }
+            table.querySelectorAll('th').forEach(function(th) {
+                th.classList.remove('asc');
+                th.classList.remove('desc');
             });
 
-            var currentTh = ths[columnIndex];
-            var icon = currentTh.querySelector("i");
-
-            if (sortDirection === 1) {
-                icon.classList.remove("fa-sort");
-                icon.classList.add("fa-sort-up"); // 升序箭頭
-            } else {
-                icon.classList.remove("fa-sort");
-                icon.classList.add("fa-sort-down"); // 降序箭頭
-            }
+            table.querySelectorAll('th')[columnIndex].classList.add(isAscending ? 'desc' : 'asc');
         }
 
         // 搜索表格中的細項

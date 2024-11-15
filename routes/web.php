@@ -15,7 +15,6 @@ use App\Http\Controllers\SurveyStatisticsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('SDG_index');
 });
-
 Route::get('SurveyStatistcs' , [SurveyStatisticsController::class, 'index']);
