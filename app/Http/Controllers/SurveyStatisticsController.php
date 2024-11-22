@@ -15,7 +15,7 @@ class SurveyStatisticsController extends Controller
     public function index()
     {
         $Statistic = Statistics::all();
-        return view('Statistics.index', compact('Statistic'));
+        return view('Statistics.list', compact('Statistic'));
     }
 
     /**

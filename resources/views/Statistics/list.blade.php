@@ -1,6 +1,14 @@
-@foreach ($Statistic->groupBy('category') as $category => $group)
-<!-- 每個「統計項目別」的分組 -->
-<div class="category-group">
+@extends('Statistics.index')
+@section('usaki')
+
+<div class="container">
+    <div class="search-container">
+        <input type="text" id="search" placeholder="搜尋細項..." onkeyup="searchTable()">
+    </div>
+
+    @foreach ($Statistic->groupBy('category') as $category => $group)
+    <!-- 每個「統計項目別」的分組 -->
+    <div class="category-group">
     <div class="category-title">{{ $category }}</div>
     <table id="table-{{ $loop->index }}">
         <thead>
@@ -28,5 +36,8 @@
             @endforeach
         </tbody>
     </table>
+    </div>
+    @endforeach
 </div>
-@endforeach
+
+@endsection

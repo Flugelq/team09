@@ -125,12 +125,8 @@
 
     @include('Statistics.header')
 
-    <div class="container">
-        <div class="search-container">
-            <input type="text" id="search" placeholder="搜尋細項..." onkeyup="searchTable()">
-        </div>
-       @include('Statistics.list')
-    </div>
+       @yield('usaki')
+    
     @include('Statistics.footer')
     <script>
         // 排序表格功能
@@ -184,7 +180,6 @@
                     }
                 });
             });
-            sortTable();
         }
     </script>
 </body>
