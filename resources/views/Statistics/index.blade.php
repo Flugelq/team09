@@ -9,7 +9,7 @@
 <body>
 
 <h1>勞工生活與就業狀況調查</h1>
-@include('Statistics.table')
+@yield('List')
 <div class="empty-space"></div>
 <script>
     // 排序功能

@@ -1,3 +1,6 @@
+@extends('Statistics.index')
+@section('List')
+
 <table id="surveyTable">
     <thead>
         <tr>
@@ -27,3 +30,5 @@
         @endforeach
     </tbody>
 </table>
+
+@endsection

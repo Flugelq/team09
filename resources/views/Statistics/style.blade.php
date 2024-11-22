@@ -8,6 +8,11 @@
         color: #333;
     }
 
+    /* 變更滑鼠游標(測試中) */
+    .myMouse {
+        cursor: url('{{ asset('images/doro.png') }}'), auto;
+    }
+
     h1 {
         text-align: center;
         background-color: #4CAF50;
