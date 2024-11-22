@@ -13,14 +13,20 @@
             padding: 0;
         }
 
-        h1 {
+        header {
             background-color: #2c3e50;
             color: #fff;
             text-align: center;
             padding: 20px;
             margin: 0;
         }
-
+        footer {
+            text-align: left;
+            display: flex;
+            background-color: #2980b9;
+            justify-content: space-evenly;
+            color: #fff;
+        }
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -74,12 +80,19 @@
         tr:hover {
             background-color: #f1f1f1;
         }
-
+        .img {
+            width: 50px;
+            height: 50px;
+        }
         .btn-sort {
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+        }
+        .foot-box {
+            font-size: 20px;
+            display: inline;
         }
 
         .btn-sort i {
@@ -102,50 +115,23 @@
         table td, table th {
             caret-color: transparent;
         }
+        nav ul, nav li{
+            display: flex;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
 
-    <h1>勞工生活及就業狀況調查</h1>
+    @include('Statistics.header')
 
     <div class="container">
         <div class="search-container">
             <input type="text" id="search" placeholder="搜尋細項..." onkeyup="searchTable()">
         </div>
-        @foreach ($Statistic->groupBy('category') as $category => $group)
-            <!-- 每個「統計項目別」的分組 -->
-            <div class="category-group">
-                <div class="category-title">{{ $category }}</div>
-                <table id="table-{{ $loop->index }}">
-                    <thead>
-                        <tr>
-                            <th>細項 <span class="btn-sort" onclick="sortTable(0, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
-                            <th>樣本數（人）<span class="btn-sort" onclick="sortTable(1, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
-                            <th>很滿意（%）<span class="btn-sort" onclick="sortTable(2, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
-                            <th>滿意（%）<span class="btn-sort" onclick="sortTable(3, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
-                            <th>普通（%）<span class="btn-sort" onclick="sortTable(4, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
-                            <th>不滿意（%）<span class="btn-sort" onclick="sortTable(5, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
-                            <th>很不滿意（%）<span class="btn-sort" onclick="sortTable(6, '{{ $loop->index }}')"><i class="fas fa-sort"></i></span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($group as $statis)
-                            <tr>
-                                <td>{{ $statis->subcategory }}</td>
-                                <td>{{ $statis->sample_size }}</td>
-                                <td>{{ $statis->very_satisfied_pct }}</td>
-                                <td>{{ $statis->satisfied_pct }}</td>
-                                <td>{{ $statis->neutral_pct }}</td>
-                                <td>{{ $statis->dissatisfied_pct }}</td>
-                                <td>{{ $statis->very_dissatisfied_pct }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endforeach
+       @include('Statistics.list')
     </div>
-
+    @include('Statistics.footer')
     <script>
         // 排序表格功能
         function sortTable(columnIndex, tableIndex) {
@@ -190,6 +176,7 @@
                 var rows = table.querySelectorAll('tbody tr');
                 rows.forEach(function(row) {
                     var text = row.querySelector('td').innerText.toLowerCase();
+                    
                     if (text.indexOf(filter) > -1) {
                         row.style.display = '';
                     } else {
@@ -197,8 +184,8 @@
                     }
                 });
             });
+            sortTable();
         }
     </script>
-
 </body>
 </html>
