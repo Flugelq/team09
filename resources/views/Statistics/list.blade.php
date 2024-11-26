@@ -1,4 +1,4 @@
-@extends('Statistics.index')
+@extends('Statistics.app')
 @section('usaki')
 
 <div class="container">
