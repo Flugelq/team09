@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勞工生活及就業狀況調查</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- 引入Font Awesome圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- 引入Font Awesome圖標 -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +14,11 @@
             margin: 0;
             padding: 0;
         }
+
+        a {
+            text-decoration: none;
+        }
+
         header {
             background-color: #2c3e50;
             color: #fff;
@@ -19,6 +26,7 @@
             padding: 20px;
             margin: 0;
         }
+
         footer {
             text-align: left;
             display: flex;
@@ -26,6 +34,7 @@
             justify-content: space-evenly;
             color: #fff;
         }
+
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -56,7 +65,8 @@
             margin-bottom: 20px;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: center;
             border: 1px solid #ddd;
@@ -79,16 +89,35 @@
         tr:hover {
             background-color: #f1f1f1;
         }
+
         .img {
             width: 50px;
             height: 50px;
         }
+
+        .btnList {
+            border: 0;
+            font-size: 14px;
+            padding: 6px 12px;
+            background-color: #003C9D;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btnList:hover {
+            color: #003C9D;
+            background-color: #fff;
+            border: 2px #003C9D solid;
+        }
+
         .btn-sort {
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
         }
+
         .foot-box {
             font-size: 20px;
             display: inline;
@@ -110,22 +139,26 @@
             border-radius: 4px;
             border: 1px solid #ccc;
         }
-        
-        table td, table th {
+
+        table td,
+        table th {
             caret-color: transparent;
         }
-        nav ul, nav li{
+
+        nav ul,
+        nav li {
             display: flex;
             text-align: right;
         }
     </style>
 </head>
+
 <body>
 
     @include('Statistics.header')
 
-       @yield('usaki')
-    
+    @yield('usaki')
+
     @include('Statistics.footer')
     <script>
         // 排序表格功能
@@ -171,7 +204,7 @@
                 var rows = table.querySelectorAll('tbody tr');
                 rows.forEach(function(row) {
                     var text = row.querySelector('td').innerText.toLowerCase();
-                    
+
                     if (text.indexOf(filter) > -1) {
                         row.style.display = '';
                     } else {
@@ -182,4 +215,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -32,11 +32,11 @@
                     <td>{{ $statis->neutral_pct }}</td>
                     <td>{{ $statis->dissatisfied_pct }}</td>
                     <td>{{ $statis->very_dissatisfied_pct }}</td>
-                    <td><a href= "{{ route('Statistics.show', ['id' => $statis->id ]) }}">顯示</a></td>
-                    <td><a href= "{{ route('Statistics.edit', ['id' => $statis->id ]) }}">修改</a></td>
+                    <td><a class="btnList" href= "{{ route('Statistics.show', ['id' => $statis->id ]) }}">顯示</a></td>
+                    <td><a class="btnList" href= "{{ route('Statistics.edit', ['id' => $statis->id ]) }}">修改</a></td>
                     <td>
                         <form action="{{ url('/SurveyStatistcs/delete', ['id' => $statis->id]) }}" method="post">
-                            <input type="submit" value="刪除" />
+                            <input class="btnList" type="submit" value="刪除" />
                             @method('delete')
                             @csrf
                         </form>
