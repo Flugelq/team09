@@ -91,8 +91,8 @@
         }
 
         .img {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
         }
 
         .btnList {
@@ -156,7 +156,7 @@
 <body>
 
     @include('Statistics.header')
-
+        
     @yield('usaki')
 
     @include('Statistics.footer')

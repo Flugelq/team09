@@ -2,6 +2,7 @@
 @section('usaki')
 
 <div class="container">
+    <a href={{ route('Statistics.create') }} >新增調查資料</a>
     <div class="search-container">
         <input type="text" id="search" placeholder="搜尋細項..." onkeyup="searchTable()">
     </div>

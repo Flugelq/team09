@@ -9,4 +9,15 @@ class Statistics extends Model
 {
     use HasFactory;
     protected $table = "survey_statistics";
+
+    protected $fillable = [
+        'category',
+        'subcategory',
+        'sample_size',
+        'very_satisfied_pct',
+        'satisfied_pct',
+        'neutral_pct',
+        'dissatisfied_pct',
+        'very_dissatisfied_pct'
+    ];
 }
