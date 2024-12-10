@@ -19,4 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('SurveyStatistics', [SurveyStatisticsController::class, 'index']);
-
+Route::get('SurveyStatistics/{id}', [SurveyStatisticsController::class, 'show'])->where('id', '[0-9]+')->name('Statistics.show');
+Route::get('SurveyStatistics/{id}/edit', [SurveyStatisticsController::class, 'edit'])->where('id', '[0-9]+')->name('Statistics.edit');
+Route::delete('SurveyStatistics/delete/{id}', [SurveyStatisticsController::class, 'destroy'])->where('id', '[0-9]+')->name('Statistics.destroy');
+Route::get('SurveyStatistics/create', [SurveyStatisticsController::class, 'create'])->name('Statistics.create');

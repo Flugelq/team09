@@ -47,7 +47,8 @@ class SurveyStatisticsController extends Controller
      */
     public function show($id)
     {
-        //
+        $statis = Statistics::findOrFail($id);
+        return view('Statistics.show')->with('statis', $statis);
     }
 
     /**
@@ -81,6 +82,8 @@ class SurveyStatisticsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $statis = Statistics::findOrFail($id);
+        $statis->delete();
+        return redirect('SurveyStatistics');
     }
 }
