@@ -25,6 +25,7 @@
             text-align: center;
             padding: 20px;
             margin: 0;
+            
         }
 
         footer {
@@ -88,6 +89,17 @@
 
         tr:hover {
             background-color: #f1f1f1;
+        }
+
+        .header-container {
+            display: inline-block; 
+            width: 100%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .header-container a {
+            float: left;
+            display: inline; 
         }
 
         .img {
@@ -156,7 +168,7 @@
 <body>
 
     @include('Statistics.header')
-        
+
     @yield('usaki')
 
     @include('Statistics.footer')

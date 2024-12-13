@@ -19,7 +19,8 @@
 {!! Form::text('satisfied_pct', null) !!}
 
 {!! Form::label('neutral_pct', '普通（%）') !!}
-{!! Form::text('neutral_pct', null) !!}
+{!! Form::text('neutral_pct', null,['style' => 'display : block']) !!}
+
 
 {!! Form::label('dissatisfied_pct', '不滿意（%）') !!}
 {!! Form::text('dissatisfied_pct', null) !!}
