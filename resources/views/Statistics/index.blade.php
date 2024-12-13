@@ -9,6 +9,9 @@
 <body>
 
 <h1>勞工生活與就業狀況調查</h1>
+<a href={{route('Statistics.create')}} class="floating-btn" onclick="showAlert()">
+    新增調查資料
+</a>
 @yield('List')
 <div class="empty-space"></div>
 <script>

@@ -25,7 +25,7 @@ class SurveyStatisticsController extends Controller
      */
     public function create()
     {
-        //
+        return view('Statistics.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class SurveyStatisticsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only([
+            'category',
+            'subcategory',
+            'sample_size',
+            'very_satisfied_pct',
+            'satisfied_pct',
+            'neutral_pct',
+            'dissatisfied_pct',
+            'very_dissatisfied_pct'
+        ]);
+
+        $Statistics = Statistics::create($data);
+        return redirect('SurveyStatistics');
     }
 
     /**

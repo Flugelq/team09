@@ -85,4 +85,26 @@
     footer a:hover {
         text-decoration: underline;
     }
+
+    /* 浮動按鈕樣式 */
+    .floating-btn {
+        position: fixed;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 12px 24px; /* 改為長方形的按鈕 */
+        font-size: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-align: center;
+        writing-mode: vertical-rl; /* 使文字垂直排列 */
+    }
+
+    .floating-btn:hover {
+        background-color: #45a049;
+    }
 </style>
