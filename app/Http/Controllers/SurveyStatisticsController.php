@@ -71,7 +71,8 @@ class SurveyStatisticsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stasis = Statistics::findOrFail($id);
+        return view('Statistics.edit')->with('statis', $stasis);
     }
 
     /**
@@ -83,7 +84,22 @@ class SurveyStatisticsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stasis = Statistics::findOrFail($id);
+        $data = $request->only([
+            'category',
+            'subcategory',
+            'sample_size',
+            'very_satisfied_pct',
+            'satisfied_pct',
+            'neutral_pct',
+            'dissatisfied_pct',
+            'very_dissatisfied_pct'
+        ]);
+
+        $stasis->fill($data);
+        $stasis->save();
+
+        return redirect('SurveyStatistics');
     }
 
     /**
