@@ -1,4 +1,5 @@
 @extends('Statistics.app')
+@section('title','顯示勞工生活及就業狀況調查')
 @section('usaki')
 <table id="table">
     <thead>
