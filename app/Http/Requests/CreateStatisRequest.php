@@ -26,7 +26,7 @@ class CreateStatisRequest extends FormRequest
         return [
             'category' => 'required|string|min:2|max:64',
             'subcategory' => 'required|string|min:1',
-            'sample_size' => 'required|numeric|min:1',
+            'sample_size' => 'required|integer|min:1',
             'very_satisfied_pct' => 'required|numeric|min:0.01|max:100.00',
             'satisfied_pct' => 'required|numeric|min:0.01|max:100.00',
             'neutral_pct' => 'required|numeric|min:0.01|max:100.00',
@@ -43,7 +43,8 @@ class CreateStatisRequest extends FormRequest
             'subcategory.required' => '細項 必填',
             'subcategory.min' => '細項 至少需要一個字元',
             'sample_size.required' => '樣本數(人) 必填',
-            'sample_size.min' => '樣本數(人) 必須為1以上的整數',
+            'sample_size.integer' => '樣本數 必須是數字',
+            'sample_size.min' => '樣本數(人) 必須是正整數',
             'very_satisfied_pct.required' => '很滿意(%) 必填',
             'very_satisfied_pct.min' => '很滿意(%) 範圍必續介於0.01~100.00',
             'very_satisfied_pct.max' => '很滿意(%) 範圍必續介於0.01~100.00',

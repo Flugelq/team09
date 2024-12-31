@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateStatisRequest;
 //use Illuminate\Http\Request;
+use App\Http\Requests\CreateStatisRequest;
 use App\Models\Statistics;
 
 class SurveyStatisticsController extends Controller
@@ -16,11 +16,11 @@ class SurveyStatisticsController extends Controller
     public function index()
     {
         $Statistic = Statistics::all();
-        return view('Statistics.list', compact('Statistic'));
+        return view('Statistics.list',compact('Statistic'));
     }
 
     /**
-     * Show the form for creating a new resour
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -49,7 +49,7 @@ class SurveyStatisticsController extends Controller
         ]);
 
         $Statistics = Statistics::create($data);
-        return redirect('SurveyStatistcs');
+        return redirect('SurveyStatistics');
     }
 
     /**
@@ -61,7 +61,7 @@ class SurveyStatisticsController extends Controller
     public function show($id)
     {
         $statis = Statistics::findOrFail($id);
-        return view('Statistics.show')->with('statis',$statis);
+        return view('Statistics.show')->with('statis', $statis);
     }
 
     /**
@@ -72,7 +72,7 @@ class SurveyStatisticsController extends Controller
      */
     public function edit($id)
     {
-        $stasis = Statistics::findorFail($id);
+        $stasis = Statistics::findOrFail($id);
         return view('Statistics.edit')->with('statis', $stasis);
     }
 
@@ -83,9 +83,9 @@ class SurveyStatisticsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateStatisRequest $request, $id)
     {
-        $stasis = Statistics::findorFail($id);
+        $stasis = Statistics::findOrFail($id);
         $data = $request->only([
             'category',
             'subcategory',
@@ -100,7 +100,7 @@ class SurveyStatisticsController extends Controller
         $stasis->fill($data);
         $stasis->save();
 
-        return redirect('SurveyStatistcs');
+        return redirect('SurveyStatistics');
     }
 
     /**
@@ -113,6 +113,6 @@ class SurveyStatisticsController extends Controller
     {
         $statis = Statistics::findOrFail($id);
         $statis->delete();
-        return redirect('SurveyStatistcs');
+        return redirect('SurveyStatistics');
     }
 }
