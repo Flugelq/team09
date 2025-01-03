@@ -24,3 +24,6 @@ Route::patch('SurveyStatistcs/update/{id}' , [SurveyStatisticsController::class,
 Route::delete('SurveyStatistcs/delete/{id}', [SurveyStatisticsController::class, 'destroy'])->where('id', '[0-9]+')->name('Statistics.destroy');
 Route::get('SurveyStatistcs/create', [SurveyStatisticsController::class, 'create'])->name('Statistics.create');
 Route::post('SurveyStatistcs/store', [SurveyStatisticsController::class, 'store'])->name('Statistics.store');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

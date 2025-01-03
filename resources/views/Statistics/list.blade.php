@@ -2,7 +2,9 @@
 @section('usaki')
 
 <div class="container">
-    <a href={{ route('Statistics.create') }} >新增調查資料</a>
+    @auth
+        <a href={{ route('Statistics.create') }} >新增調查資料</a>
+    @endauth
     <div class="search-container">
         <input type="text" id="search" placeholder="搜尋細項..." onkeyup="searchTable()">
     </div>
@@ -34,6 +36,7 @@
                     <td>{{ $statis->dissatisfied_pct }}</td>
                     <td>{{ $statis->very_dissatisfied_pct }}</td>
                     <td><a class="btnList" href= "{{ route('Statistics.show', ['id' => $statis->id ]) }}">顯示</a></td>
+                    @can('admin')
                     <td><a class="btnList" href= "{{ route('Statistics.edit', ['id' => $statis->id ]) }}">修改</a></td>
                     <td>
                         <form action="{{ url('/SurveyStatistcs/delete', ['id' => $statis->id]) }}" method="post">
@@ -42,6 +45,9 @@
                             @csrf
                         </form>
                     </td>
+                    @elsecan('manager')
+                    <td><a class="btnList" href= "{{ route('Statistics.edit', ['id' => $statis->id ]) }}">修改</a></td>
+                    @endcan
                 </tr>
             @endforeach
         </tbody>
