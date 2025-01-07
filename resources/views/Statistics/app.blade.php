@@ -25,6 +25,7 @@
             text-align: center;
             padding: 20px;
             margin: 0;
+            user-select: none;
             
         }
 
@@ -150,6 +151,21 @@
             width: 200px;
             border-radius: 4px;
             border: 1px solid #ccc;
+        }
+
+        .butten {
+            color: white;
+            background-color: white;
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .btn-log {
+            font-size: clamp(14px, 18px);
+            color : #4CAF50;
         }
 
         table td,
