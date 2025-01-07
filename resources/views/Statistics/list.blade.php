@@ -14,10 +14,10 @@
             <th onclick="sortTable(7)">非常不滿意%</th>
         </tr>
     </thead>
-    <tbody>
+    <td>
         <!-- 以下是範例數據 -->
         @foreach ($Statistic as $statis)
-        <tr>
+        <td>
             <td>{{$statis->category}}</td>
             <td>{{$statis->subcategory}}</td>
             <td>{{$statis->sample_size}}</td>
@@ -27,6 +27,7 @@
             <td>{{$statis->dissatisfied_pct}}</td>
             <td>{{$statis->very_dissatisfied_pct}}</td>
             <td><a href="{{route('Statistics.show', ['id' => $statis->id])}}">顯示</a></td>
+            @can('admin')
             <td><a href="{{route('Statistics.edit', ['id' => $statis->id])}}">修改</a></td>
             <td>
                 <form action="{{url('SurveyStatistics/delete', ['id' => $statis->id])}}" method="post">
@@ -35,6 +36,9 @@
                     @csrf
                 </form>
             </td>
+            @elsecan('manager')
+            <td><a href="{{route('Statistics.edit', ['id' => $statis->id])}}">修改</a></td>
+            @endcan
         </tr>
         @endforeach
     </tbody>
