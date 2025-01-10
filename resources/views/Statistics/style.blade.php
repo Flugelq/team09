@@ -15,9 +15,9 @@
 
     h1 {
         text-align: center;
-        background-color: #4CAF50;
+        background-color: #850b1b;
         color: white;
-        padding: 20px 0;
+        padding: 30px 0;
         margin-bottom: 30px;
     }
 
@@ -36,7 +36,7 @@
     }
 
     th {
-        background-color: #4CAF50;
+        background-color: #850b1b;;
         color: white;
         cursor: pointer;
     }
@@ -67,7 +67,7 @@
 
     /* Footer樣式 */
     footer {
-        background-color: #4CAF50;
+        background-color: #850b1b;9;
         color: white;
         text-align: center;
         padding: 15px 0;
@@ -92,7 +92,7 @@
         left: 20px;
         top: 50%;
         transform: translateY(-50%);
-        background-color: #4CAF50;
+        background-color: #850b1b;;
         color: white;
         border: none;
         padding: 12px 24px; /* 改為長方形的按鈕 */
@@ -105,6 +105,24 @@
     }
 
     .floating-btn:hover {
-        background-color: #45a049;
+        background-color: #850b1b;;
     }
+
+    /* 定位ul列表在頁面右上角 */
+    .button-list {
+        color: white;
+        background-color: white;
+        margin: 5px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor:pointer;
+        float: right;
+        transition: background-color 0.3 ease, transform 0.3 ease;
+    }
+
+    /* 按鈕懸停效果 */
+    .button-list li a:hover {
+        background-color: #0056b3;
+    }
+    
 </style>

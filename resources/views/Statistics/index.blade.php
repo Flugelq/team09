@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @guest
         @if (Route::has('login'))
-            <li class="nav-item">
+            <ul class="button-list">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
+            </ul>
         @endif
         
         @if (Route::has('register'))
-        <li class="nav-item">
+            <ul class="button-list">
             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </li>
+            </ul>
         @endif
     @else
-        <ul class="butten">
+        <ul class="button-list">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }}
             </a>
         </ul>
 
-        <ul class="butten" aria-labelledby="navbarDropdown">
+        <ul class="button-list" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">

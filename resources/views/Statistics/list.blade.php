@@ -14,10 +14,9 @@
             <th onclick="sortTable(7)">非常不滿意%</th>
         </tr>
     </thead>
-    <td>
+   
         <!-- 以下是範例數據 -->
         @foreach ($Statistic as $statis)
-        <td>
             <td>{{$statis->category}}</td>
             <td>{{$statis->subcategory}}</td>
             <td>{{$statis->sample_size}}</td>
