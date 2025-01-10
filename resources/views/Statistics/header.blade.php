@@ -2,13 +2,13 @@
         @guest
             @if (Route::has('login'))
                 <ul class="butten">
-                    <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a href="{{ route('login') }}">{{ __('Login') }}</a>
                 </ul>
             @endif
 
             @if (Route::has('register'))
                 <ul class="butten">
-                    <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
                 </ul>
             @endif
         @else

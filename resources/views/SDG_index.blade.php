@@ -36,6 +36,7 @@
     .container {
         caret-color: transparent;
         display: flex;
+        flex-direction: column;
         /* justify-content: center; */
         margin: 10% auto auto auto;
         /* align-items: center; */
@@ -49,6 +50,15 @@
       text-align: center;
       /* max-width: 400px; */
       width: 100%;
+    }
+    .image-container {
+      margin-top: 30px; /* 增加圖片與其他內容之間的間距 */
+    }
+
+    .image-container img {
+      max-width: 100%; /* 讓圖片自動適應容器寬度 */
+      height: auto;
+      border-radius: 8px; /* 圓角效果 */
     }
 
     h1 {
@@ -115,6 +125,10 @@
       <h1>勞工生活及就業狀況調查統計頁面</h1>
       <a href="http://127.0.0.1:8000/SurveyStatistcs" class="btn">進入調查統計</a>
     </div>
+    <div class="image-container">
+      <img src = "{{URL::asset("image/image1.png")}}">
+    </div>
   </div>
+  
 </body>
 </html>

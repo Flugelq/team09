@@ -16,7 +16,11 @@
         }
 
         a {
+            color: rgb(5, 6, 107);
             text-decoration: none;
+            font-family: Arial, sans-serif;  /* 保持字型 */
+            font-size: 16px;  /* 保持字型大小 */
+            transition: all 0.3s ease;
         }
 
         header {
@@ -161,6 +165,34 @@
             border-radius: 5px;
             cursor: pointer;
             float: right;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .butten:hover {
+            background-color: #0ce7dc;
+            transform: translateY(-3px);
+        }
+
+        .butten:active {
+            transform: translateY(1px);
+        }
+        .Cbutten {
+            color: rgb(8, 8, 94);
+            background-color: white;
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: left;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .Cbutten:hover {
+            color: ;
+            background-color: #0ce7dc;
+            transform: translateY(-3px);
+        }
+
+        .Cbutten:active {
+            transform: translateY(1px);
         }
 
         .btn-log {

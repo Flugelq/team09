@@ -3,7 +3,7 @@
 
 <div class="container">
     @auth
-        <a href={{ route('Statistics.create') }} >新增調查資料</a>
+        <a href={{ route('Statistics.create') }} class="Cbutten">新增調查資料</a>
     @endauth
     <div class="search-container">
         <input type="text" id="search" placeholder="搜尋細項..." onkeyup="searchTable()">
